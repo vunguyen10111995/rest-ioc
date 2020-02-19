@@ -33,22 +33,10 @@ export class RestController {
         let employee = await restService.findById(id);
         res.status(200).json(employee);
     }
-
-    public async store(req: Request, res: Response) {
-        let title = req.body.title;
-        let body = req.body.body;
-        let userId = req.body.userId;
-
-        const data = { title: title, body: body, userId: userId };
-
-        let newEmployee = await restService.store(data);
-        res.status(201).json(newEmployee);
-    }
    
     init() {
         this.router.get('/', this.getAll);
         this.router.get('/:id', this.findById);
-        this.router.post('/', this.store);
     }
 }
 
